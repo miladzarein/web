@@ -126,15 +126,7 @@
         <form method="post" action="{% url 'accounts:login' %}">
             {% csrf_token %}
             
-            <div class="form-group">
-                <label for="username">نام کاربری:</label>
-                <input type="text" id="username" name="username" required placeholder="نام کاربری خود را وارد کنید">
-            </div>
-
-            <div class="form-group">
-                <label for="password">رمز عبور:</label>
-                <input type="password" id="password" name="password" required placeholder="رمز عبور خود را وارد کنید">
-            </div>
+            {{form.as_p}}
 
             <button type="submit">ورود به سیستم</button>
         </form>
