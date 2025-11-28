@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت نام</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 450px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 6px;
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 11px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+        input:focus {
+            border-color: #4caf50;
+            outline: none;
+        }
+        .errorlist {
+            color: #c62828;
+            background: #ffebee;
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 6px;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background: #43a047;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+
+    <h2>ثبت نام</h2>
+
+    <form method="post" action="{% url 'accounts:signup' %}">
+        {% csrf_token %}
+
+        <!-- نام -->
+        <div class="form-group">
+            <label for="id_first_name">نام</label>
+            <input type="text" name="first_name" id="id_first_name" value="{{ form.first_name.value|default:'' }}">
+            {{ form.first_name.errors }}
+        </div>
+
+        <!-- نام خانوادگی -->
+        <div class="form-group">
+            <label for="id_last_name">نام خانوادگی</label>
+            <input type="text" name="last_name" id="id_last_name" value="{{ form.last_name.value|default:'' }}">
+            {{ form.last_name.errors }}
+        </div>
+
+        <!-- ایمیل -->
+        <div class="form-group">
+            <label for="id_email">ایمیل</label>
+            <input type="email" name="email" id="id_email" value="{{ form.email.value|default:'' }}">
+            {{ form.email.errors }}
+        </div>
+
+        <!-- نام کاربری -->
+        <div class="form-group">
+            <label for="id_username">نام کاربری</label>
+            <input type="text" name="username" id="id_username" value="{{ form.username.value|default:'' }}">
+            {{ form.username.errors }}
+        </div>
+
+        <!-- رمز عبور -->
+        <div class="form-group">
+            <label for="id_password1">رمز عبور</label>
+            <input type="password" name="password1" id="id_password1">
+            {{ form.password1.errors }}
+        </div>
+
+        <!-- تکرار رمز -->
+        <div class="form-group">
+            <label for="id_password2">تکرار رمز عبور</label>
+            <input type="password" name="password2" id="id_password2">
+            {{ form.password2.errors }}
+        </div>
+
+        <button type="submit">ایجاد حساب</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
